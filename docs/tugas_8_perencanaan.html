@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Perencanaan Teknis &amp; Sprint 1 - AgriTernak Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #ffffff;
+        }
+        h1, h2, h3, h4 {
+            color: #0f172a;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            border-bottom: 2px solid #52b788;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        h2 {
+            font-size: 18px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 32px;
+            color: #2d6a4f;
+        }
+        h3 {
+            font-size: 15px;
+            margin-top: 20px;
+            color: #1b4332;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        ul, ol {
+            font-size: 14px;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #0f172a;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            margin: 16px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 24px 0;
+        }
+        
+        /* Print styling optimized for PDF export */
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+                font-size: 11pt;
+            }
+            h1 {
+                font-size: 18pt;
+            }
+            h2 {
+                font-size: 14pt;
+                page-break-after: avoid;
+            }
+            h3 {
+                font-size: 12pt;
+                page-break-after: avoid;
+            }
+            table {
+                page-break-inside: avoid;
+                font-size: 9pt;
+            }
+            tr {
+                page-break-inside: avoid;
+            }
+            img {
+                page-break-inside: avoid;
+                max-height: 80mm;
+            }
+            .mermaid {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>DOKUMEN PERENCANAAN TEKNIS &amp; SPRINT 1 STARTUP MINI</h1>
+<p><strong>Mata Kuliah:</strong> Technopreneurship (TI242642)<br />
+<strong>Program Studi:</strong> S1 Teknik Informatika - Universitas Sains dan Teknologi Indonesia<br />
+<strong>Tugas:</strong> Tugas Mandiri Ke-8 (Setup Proyek &amp; Perencanaan Sprint 1 Startup Mini)</p>
+<hr />
+<h2>1. Identitas Tim &amp; Peran (Sprint 1)</h2>
+<ul>
+<li><strong>Nama Tim:</strong> AgriTernak Dev Team  </li>
+<li><strong>Daftar Anggota &amp; Peran (Kelompok 2 Orang):</strong></li>
+<li><strong>Fika Arieq Nur Rahmat</strong> - <em>Product Owner, Scrum Master, &amp; Lead Frontend Developer</em><ul>
+<li>Mengoordinasi pembagian tugas tim, mengelola Trello board, menyusun target sprint, merancang struktur komponen React, routing halaman, serta mengintegrasikan API backend ke frontend.</li>
+</ul>
+</li>
+<li><strong>Fikri Meiza Putra</strong> - <em>Lead Backend Developer &amp; UI/UX Designer</em><ul>
+<li>Bertanggung jawab atas desain database, pembuatan model data berbasis OOP, pengembangan API endpoints menggunakan Flask, serta merancang wireframe/mockup tampilan aplikasi.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>2. Deskripsi Produk Teknologi</h2>
+<p><strong>AgriTernak Connect</strong> adalah platform marketplace digital (startup mini) yang menghubungkan petani dan peternak lokal secara langsung dengan pembeli (B2C &amp; B2B). Platform ini bertujuan memotong rantai distribusi pertanian dan peternakan tradisional yang panjang dan sering kali merugikan produsen kecil. Melalui AgriTernak Connect, petani/peternak dapat dengan mudah mengelola katalog produk hasil panen atau ternak, menetapkan harga yang adil, serta memantau stok secara real-time. Di sisi lain, pembeli mendapatkan akses langsung ke bahan pangan segar berkualitas dengan harga kompetitif dan sistem pelacakan pesanan yang transparan. Dengan menyederhanakan rantai pasok melalui teknologi RESTful API berbasis Flask dan antarmuka React yang responsif, platform ini mempercepat transaksi, mengurangi limbah pangan akibat penyimpanan terlalu lama, serta mendorong kesejahteraan ekonomi komunitas pertanian lokal secara berkelanjutan.</p>
+<hr />
+<h2>3. Arsitektur Sederhana (Diagram Blok)</h2>
+<p>Aplikasi menggunakan arsitektur <strong>Client-Server (Three-Tier Architecture)</strong>:
+1. <strong>Presentation Layer (Frontend)</strong>: React.js SPA (Single Page Application) yang berjalan di sisi browser klien.
+2. <strong>Application Layer (Backend)</strong>: Flask RESTful API yang melayani request dari klien dan menerapkan logika bisnis (business logic).
+3. <strong>Database Layer (Data Store)</strong>: Relational Database MySQL untuk menyimpan data user, produk, kategori, dan pesanan secara persisten.</p>
+<p>Berikut adalah diagram blok arsitektur interaksinya:</p>
+<div class="mermaid">graph TD
+    subgraph Client [Client - Frontend]
+        A[&"React.js SPA\n(Port 3000)&"]
+    end
+
+    subgraph Server [Application - Backend]
+        B[&"Flask Web Server\n(Port 5000)&"]
+        C[&"JWT Authentication\n(Security)&"]
+        D[&"SQLAlchemy ORM\n(Data Mapper)&"]
+    end
+
+    subgraph Database [Data Store]
+        E[(&"MySQL Database\n(agriternak_db)&")]
+    end
+
+    A <-->|HTTP Requests / JSON Responses\n(CORS Enabled)| B
+    B <--> C
+    B <--> D
+    D <-->|SQL Queries| E
+</div>
+<hr />
+<h2>4. Penerapan Object-Oriented Programming (OOP)</h2>
+<p>Proyek ini diimplementasikan menggunakan prinsip OOP dalam pemodelan data backend (menggunakan SQLAlchemy ORM). Tiga kelas utama yang digunakan adalah:</p>
+<h3>A. Konsep OOP yang Diterapkan</h3>
+<ol>
+<li><strong>Inheritance (Pewarisan)</strong>: Kelas <code>User</code>, <code>Product</code>, dan <code>Order</code> mewarisi properti dan metode dari kelas dasar ORM <code>db.Model</code> untuk pemetaan database otomatis.</li>
+<li><strong>Encapsulation (Pengkapsulan)</strong>: </li>
+<li>Atribut sensitif seperti password pada <code>User</code> dienkapsulasi dengan variabel privat (<code>__password</code>) dan hanya dapat diakses/diubah melalui metode <code>setPassword()</code> dan <code>checkPassword()</code>.</li>
+<li>Atribut <code>harga</code> dan <code>stok</code> pada <code>Product</code> serta <code>total</code> pada <code>Order</code> dienkapsulasi dengan metode getter/modifier khusus (<code>getHarga()</code>, <code>getStok()</code>, <code>updateStok()</code>, <code>getTotal()</code>).</li>
+</ol>
+<h3>B. Detail Struktur Kelas (Classes, Attributes &amp; Methods)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nama Kelas</th>
+<th style="text-align: left;">Atribut (Attributes)</th>
+<th style="text-align: left;">Metode (Methods)</th>
+<th style="text-align: left;">Hubungan/Relasi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>User</strong></td>
+<td style="text-align: left;">- <code>id</code> (Integer, PK)<br>- <code>nama</code> (String)<br>- <code>email</code> (String, Unique)<br>- <code>__password</code> (String, Private)<br>- <code>role</code> (Enum)<br>- <code>no_hp</code> (String)<br>- <code>created_at</code> (DateTime)</td>
+<td style="text-align: left;">- <code>setPassword(password)</code>: Enkripsi password<br>- <code>checkPassword(password)</code>: Validasi password login<br>- <code>getProfil()</code>: Mengembalikan info profil user dalam format dict</td>
+<td style="text-align: left;">- Satu <code>User</code> memiliki satu detail <code>Petani</code><br>- Satu <code>User</code> (role pembeli) dapat memiliki banyak <code>Order</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Product</strong></td>
+<td style="text-align: left;">- <code>id</code> (Integer, PK)<br>- <code>petani_id</code> (Integer, FK)<br>- <code>category_id</code> (Integer, FK)<br>- <code>nama</code> (String)<br>- <code>__harga</code> (Numeric, Private)<br>- <code>__stok</code> (Integer, Private)<br>- <code>satuan</code> (String)<br>- <code>status</code> (Enum)<br>- <code>created_at</code> (DateTime)</td>
+<td style="text-align: left;">- <code>getHarga()</code>: Mengambil harga desimal<br>- <code>getStok()</code>: Mengambil sisa stok produk<br>- <code>updateStok(jumlah_baru)</code>: Memperbarui stok dan status produk<br>- <code>updateHarga(harga_baru)</code>: Memperbarui harga produk<br>- <code>hapusProduk()</code>: Nonaktifkan status produk<br>- <code>toDict()</code>: Serialisasi objek ke dictionary</td>
+<td style="text-align: left;">- Dimiliki oleh satu <code>Petani</code> (<code>petani_id</code>) <br>- Tergolong dalam satu <code>Category</code> (<code>category_id</code>)<br>- Dapat dipesan di banyak <code>Order</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Order</strong></td>
+<td style="text-align: left;">- <code>id</code> (Integer, PK)<br>- <code>pembeli_id</code> (Integer, FK)<br>- <code>product_id</code> (Integer, FK)<br>- <code>jumlah</code> (Integer)<br>- <code>__total</code> (Numeric, Private)<br>- <code>status</code> (Enum)<br>- <code>catatan</code> (Text)<br>- <code>order_date</code> (DateTime)</td>
+<td style="text-align: left;">- <code>getTotal()</code>: Mengambil total harga transaksi<br>- <code>hitungTotal(harga_satuan)</code>: Menghitung ulang total belanja<br>- <code>konfirmasi() / kirim() / selesai() / batalkan()</code>: Mengubah status transaksi<br>- <code>toDict()</code>: Serialisasi objek ke dictionary</td>
+<td style="text-align: left;">- Dipesan oleh satu <code>User</code> (pembeli)<br>- Memesan satu <code>Product</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Target MVP (Minimum Viable Product) Minggu Ke-14</h2>
+<p>Fitur minimal yang harus berjalan 100% pada demonstrasi akhir di Minggu ke-14:
+1. <strong>Autentikasi Pengguna (Login &amp; Register)</strong>:
+   - Pengguna baru dapat mendaftarkan akun sesuai dengan role (Petani/Peternak vs Pembeli).
+   - Pengguna terdaftar dapat masuk (Login) dan mendapatkan JWT Token untuk akses API berproteksi.
+2. <strong>Katalog Produk (Sisi Petani/Peternak &amp; Pembeli)</strong>:
+   - Petani/peternak dapat mengunggah (posting) produk hasil tani atau ternaknya, mengupdate stok, dan merubah harga.
+   - Pembeli dapat menelusuri daftar produk yang tersedia berdasarkan kategori (hasil tani / hasil ternak).
+3. <strong>Sistem Keranjang &amp; Transaksi Pemesanan</strong>:
+   - Pembeli dapat melakukan pemesanan produk.
+   - Sistem melakukan pengecekan stok, mengurangi stok secara otomatis apabila pesanan berhasil dibuat, dan menjumlahkan total harga belanja.
+   - Petani/peternak dapat mengonfirmasi atau memproses status pesanan dari pembeli.</p>
+<hr />
+<h2>6. Daftar Tugas (Task) &amp; Distribusi Sprint 1 (Minggu 9-10)</h2>
+<p>Berikut adalah visualisasi daftar minimal 10 tugas realistis yang dimasukkan ke dalam <strong>Trello Board</strong> untuk Sprint 1:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Nama Task</th>
+<th style="text-align: left;">Assignee (Peran)</th>
+<th style="text-align: left;">Label</th>
+<th style="text-align: center;">Estimasi</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Deskripsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>TSK-01</strong></td>
+<td style="text-align: left;">Inisialisasi GitHub &amp; Setup Git di root folder</td>
+<td style="text-align: left;">Lead Backend</td>
+<td style="text-align: left;">Infra</td>
+<td style="text-align: center;">1 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Menginisialisasi Git di folder root agriternakconnect/ dan menghapus repo nested di frontend/</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-02</strong></td>
+<td style="text-align: left;">Membuat file .gitignore dan README.md</td>
+<td style="text-align: left;">Product Owner</td>
+<td style="text-align: left;">Dokumentasi</td>
+<td style="text-align: center;">1 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Menambahkan berkas abaian git (.gitignore) dan petunjuk cara instalasi di README.md</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-03</strong></td>
+<td style="text-align: left;">Inisialisasi Trello Board &amp; Sprint Planning</td>
+<td style="text-align: left;">Product Owner</td>
+<td style="text-align: left;">Manajemen</td>
+<td style="text-align: center;">1 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Membuat Board Trello, mendefinisikan kolom status dan mendistribusikan task Sprint 1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-04</strong></td>
+<td style="text-align: left;">Membuat dokumen perencanaan teknis Tugas 8</td>
+<td style="text-align: left;">Semua Anggota</td>
+<td style="text-align: left;">Dokumentasi</td>
+<td style="text-align: center;">2 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Menyusun dokumen perencanaan arsitektur, diagram OOP, dan target MVP (format markdown/PDF)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-05</strong></td>
+<td style="text-align: left;">Konfigurasi database MySQL &amp; Flask-SQLAlchemy</td>
+<td style="text-align: left;">Lead Backend</td>
+<td style="text-align: left;">Backend</td>
+<td style="text-align: center;">3 jam</td>
+<td style="text-align: left;"><strong>To Do</strong></td>
+<td style="text-align: left;">Menyiapkan schema database <code>agriternak_db</code> dan konfigurasi koneksi di file <code>config/database.py</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-06</strong></td>
+<td style="text-align: left;">Implementasi OOP model User dan Petani</td>
+<td style="text-align: left;">Lead Backend</td>
+<td style="text-align: left;">Backend</td>
+<td style="text-align: center;">3 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Menulis class <code>User</code> dan <code>Petani</code> dengan enkapsulasi password dan relasi database di Flask</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-07</strong></td>
+<td style="text-align: left;">Implementasi OOP model Product &amp; Category</td>
+<td style="text-align: left;">Lead Backend</td>
+<td style="text-align: left;">Backend</td>
+<td style="text-align: center;">3 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Menulis class <code>Product</code> dan <code>Category</code> lengkap dengan metode getter/setter untuk stok dan harga</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-08</strong></td>
+<td style="text-align: left;">Implementasi OOP model Order (Transaksi)</td>
+<td style="text-align: left;">Lead Backend</td>
+<td style="text-align: left;">Backend</td>
+<td style="text-align: center;">4 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Menulis class <code>Order</code> lengkap dengan logika kalkulasi harga total belanja pembeli</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-09</strong></td>
+<td style="text-align: left;">Pembuatan API Endpoints untuk Register &amp; Login</td>
+<td style="text-align: left;">Lead Backend</td>
+<td style="text-align: left;">Backend</td>
+<td style="text-align: center;">4 jam</td>
+<td style="text-align: left;"><strong>Done</strong></td>
+<td style="text-align: left;">Membuat router <code>/api/auth/register</code> dan <code>/api/auth/login</code> menggunakan Flask Blueprint &amp; JWT</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-10</strong></td>
+<td style="text-align: left;">Desain Wireframe &amp; Mockup UI Halaman Login</td>
+<td style="text-align: left;">UI/UX Designer</td>
+<td style="text-align: left;">Desain</td>
+<td style="text-align: center;">3 jam</td>
+<td style="text-align: left;"><strong>To Do</strong></td>
+<td style="text-align: left;">Membuat mockup tampilan interface form registrasi dan login menggunakan Figma</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-11</strong></td>
+<td style="text-align: left;">Setup React Project &amp; React Router</td>
+<td style="text-align: left;">Lead Frontend</td>
+<td style="text-align: left;">Frontend</td>
+<td style="text-align: center;">4 jam</td>
+<td style="text-align: left;"><strong>To Do</strong></td>
+<td style="text-align: left;">Menyiapkan dependensi react-router-dom dan membuat routing dasar untuk halaman login/register</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TSK-12</strong></td>
+<td style="text-align: left;">Implementasi UI Form Login dasar di React</td>
+<td style="text-align: left;">Lead Frontend</td>
+<td style="text-align: left;">Frontend</td>
+<td style="text-align: center;">3 jam</td>
+<td style="text-align: left;"><strong>To Do</strong></td>
+<td style="text-align: left;">Membuat komponen form login menggunakan React state untuk menampung input pengguna</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Lampiran Tangkapan Layar Trello Board</h2>
+<p>Berikut adalah bukti visual dari Trello Board kelompok kami yang memuat status pembagian tugas, kategori label, estimasi waktu, serta penanggung jawab masing-masing <em>task</em>:</p>
+<p><img alt="Trello Board AgriTernak Connect" src="trello_screenshot.png" /></p>
+<p><em>Catatan: Harap simpan file gambar screenshot Trello Anda dengan nama <code>trello_screenshot.png</code> di dalam folder <code>docs/</code> agar gambar di atas otomatis terhubung ketika dokumen ini dicetak menjadi PDF.</em></p>
+</body>
+</html>

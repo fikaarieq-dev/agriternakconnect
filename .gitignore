@@ -1,0 +1,38 @@
+# Python environment
+venv/
+.venv/
+ENV/
+env/
+*.pyc
+__pycache__/
+.env
+
+# Node.js
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Production builds
+frontend/build/
+frontend/dist/
+build/
+dist/
+
+# Databases & local files
+*.sqlite3
+*.db
+instance/
+
+# IDEs & System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
