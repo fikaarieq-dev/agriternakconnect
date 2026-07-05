@@ -89,8 +89,4 @@ Pastikan Anda memiliki tools berikut terinstal di komputer Anda:
 
 ---
 
-## Anggota Tim & Peran (Sprint 1)
-* **Product Owner / Scrum Master**: *[Nama Anggota 1 / Mahasiswa]*
-* **Backend Developer**: *[Nama Anggota 2 / Mahasiswa]*
-* **Frontend Developer**: *[Nama Anggota 3 / Mahasiswa]*
-* **UI/UX Designer & QA**: *[Nama Anggota 4 / Mahasiswa]*
+
